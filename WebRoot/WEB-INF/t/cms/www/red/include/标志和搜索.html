@@ -1,0 +1,18 @@
+<div class="pageTitle">
+    <!-- LOGO_begin -->
+    <div class="webLogo" style="width:300px;height:70px;">
+        <img  src="../../${res}/" />
+    </div>
+    <!-- LOGO_end -->
+    <!-- 搜索_begin -->
+    <div class="searchCon">
+        <form action="${base}/search.jspx" target="_blank">
+            <div class="searchBg">
+            	<input name="q" value="${oldq!'请输入关键词'}" type="text" onfocus="if(this.value=='请输入关键词')this.value=''" onblur="if(this.value=='')this.value='请输入关键词'" maxlength="50" autocomplete="off" / style="border:0;width:98%;">
+            </div>
+            <input type="submit" class="searchMenu" value=""/ >
+        </form>
+    </div>
+    <!-- 搜索_end -->
+</div>
+<div class="clear"></div>

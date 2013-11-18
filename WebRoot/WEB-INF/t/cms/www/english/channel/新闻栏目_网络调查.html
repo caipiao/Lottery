@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.title!channel.name} - ${site.name} - Powered by JEECMS</title>
+<meta http-equiv="keywords" content="${channel.keywords!}"/>
+<meta http-equiv="description" content="${channel.description!}"/>
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css"/>
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<link href="/${res}/css/layout.css" rel="stylesheet" type="text/css"/>
+<script src="/${res}/js/common.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+	Cms.siteFlow("${base}", location.href, document.referrer);
+});
+</script>
+</head>
+
+<body>
+[#include "../include/header_top.html"/]
+[#include "../include/header_nav.html"/]
+<div id="main">
+<div class="page2 position1"> 您现在正在浏览： <a href="${base}/">首页</a> &raquo; [#list channel.nodeList as n]<a href="${n.url}" target="_blank">${n.name}</a>[#if n_has_next] &raquo; [/#if][/#list]</div>
+
+<!--cjbd_begin-->
+<div class="page2 box">
+  <div class="w720 fl">
+    <div class="left_top1 box">
+      <h2 class="fl"><a href="#" target="_blank">${channel.name!}</a></h2>
+    </div>
+    <div class="box"></div>
+    <div class="left_div1 box">
+		<div class="w96" style="min-height:800px;">
+        	[#include "../include/vote.html"/]
+		</div>
+    </div>
+    <div class="left_low"></div>	
+  </div>  
+  
+  <div class="w250 fr">
+   进行中调查<br />
+    [@cms_vote]
+    	${tag_bean.title?html}<br/>
+    [/@cms_vote]
+    往期调查<br />
+    [@cms_vote_list  siteId=site.id]
+		[#list tag_list as vote]
+			<li><a href="${base}/vote.jspx?voteId=${vote.id}">${vote.title?html}</a>&nbsp;[#if vote.endTime??]${vote.endTime?string("yyyy-MM-dd")}[/#if]</li>
+		[/#list]
+	[/@cms_vote_list]
+  </div>
+</div>
+<!--cjbd_end-->
+</div>
+<div id="wrapper">
+[#include "../include/footer_links_bar.html"/]
+[#include "../include/footer.html"/]
+</div>
+</body>
+</html>
